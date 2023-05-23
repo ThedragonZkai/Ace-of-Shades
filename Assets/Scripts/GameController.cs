@@ -6,8 +6,8 @@ public class GameController : MonoBehaviour
 {
 	public GameObject leftController;
 	private Rigidbody LCRB;
-	public float testingSpeed = 1;
-	public float testingRotateSpeed = 1;
+	public float testingSpeed = 0.1f;
+	public float testingRotateSpeed = 0.1f;
 	bool testingMode = false;
 
 
