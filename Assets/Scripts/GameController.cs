@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 	public GameObject leftController;
-	private Rigidbody LCRB;
+	public GameObject rightController;
 	public float testingSpeed = 0.1f;
 	public float testingRotateSpeed = 0.1f;
 	bool testingMode = false;
@@ -18,7 +18,6 @@ public class GameController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		LCRB = leftController.GetComponent<Rigidbody>();
 	}
 
     // Update is called once per frame
@@ -27,11 +26,6 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.T)) {
 			testingMode = true;
 			Debug.Log("Testing Mode initiated");
-		}
-
-
-        if (Input.GetButton("XRI_Left_Trigger")) {
-			Debug.Log("OMG IT WORKS");
 		}
 
 		if (testingMode) {
@@ -78,5 +72,8 @@ public class GameController : MonoBehaviour
 			// 	leftController.transform.eulerAngles += new Vector3(0,-testingRotateSpeed,0);
 			// }
 		}
+
+
+
     }
 }
