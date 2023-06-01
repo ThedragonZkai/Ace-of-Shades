@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
 		}
 
 		if (testingMode) {
+			float testSpeedMod = testingSpeed * Time.deltaTime;
 			if (Input.GetKey(KeyCode.W)) {
 				leftController.transform.position = leftController.transform.position + (new Vector3(0, 0, testingSpeed));
 			}
