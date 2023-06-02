@@ -83,9 +83,9 @@ public class HandDetect : MonoBehaviour
 			{
 				holdingObj.GetComponent<Rigidbody>().isKinematic = false;
 				holdingObj.transform.SetParent(null, true);
-				holdingObj.GetComponent<Rigidbody>().AddForce((transform.position - lastWorldPos) * Time.deltaTime * forceAmplifier, ForceMode.Impulse);
-				holdingObj.GetComponent<Rigidbody>().AddTorque((transform.rotation.eulerAngles - lastWorldRot) * Time.deltaTime * forceAmplifier, ForceMode.Impulse);
-				Debug.Log((transform.rotation.eulerAngles - lastWorldRot) * Time.deltaTime * forceAmplifier);
+				holdingObj.GetComponent<Rigidbody>().AddForce((transform.position - lastWorldPos) * forceAmplifier, ForceMode.Impulse);
+				holdingObj.GetComponent<Rigidbody>().AddTorque((transform.rotation.eulerAngles - lastWorldRot) * forceAmplifier, ForceMode.Impulse);
+				Debug.Log((transform.rotation.eulerAngles - lastWorldRot) * forceAmplifier);
 				touchingObj = null;
 				holdingObj = null;
 				isHolding = false;
