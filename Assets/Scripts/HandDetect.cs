@@ -70,17 +70,19 @@ public class HandDetect : MonoBehaviour
 
 			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0 && lastTriggerPull == 0) || Input.GetMouseButtonDown(mouseB))
 			{
-				Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
-				foreach (Collider col in allColliders) {
-					col.enabled = false;
-				}
+				
 
 
 				Debug.Log("trigger pulled");
 				holdingObj = touchingObj;
 				isHolding = true;
 				holdingObj.GetComponent<Rigidbody>().isKinematic = true;
-				visuals.SetActive(false);
+				Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
+			foreach (Collider col in allColliders)
+			{
+				col.enabled = false;
+			}
+			visuals.SetActive(false);
 				holdingObj.transform.SetParent(this.gameObject.transform, true);
 				holdingObj.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 				holdingObj.transform.localPosition = new Vector3(0, 0, 0);
