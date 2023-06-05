@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour
 	public float speed;
 	public float drag;
 	Camera cam;
+	public float jumpForce;
+	bool isGrounded = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -21,14 +23,38 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Vector3 moveX = cam.transform.right * Input.GetAxis("Horizontal") * speed;
-		Vector3 moveZ = cam.transform.forward * Input.GetAxis("Vertical") * speed;
-		// Vector3 dragX = cam.transform.right * rb.velocity.x * speed * drag;
-		// Vector3 dragY = cam.transform.forward * rb.velocity.z * speed * drag;
+		Vector3 moveX = new Vector3(cam.transform.right.normalized.x, cam.transform.right.normalized.y, cam.transform.right.normalized.z) * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+		Vector3 moveZ = new Vector3(cam.transform.forward.normalized.x, cam.transform.forward.normalized.y, cam.transform.forward.normalized.z)  * Input.GetAxis("Vertical") * speed * Time.deltaTime;
+		float dragX = rb.velocity.x * speed * drag;
+		float dragZ = rb.velocity.z * speed * drag;
 
 		rb.AddForce(moveX, ForceMode.Impulse);
 		rb.AddForce(moveZ, ForceMode.Impulse);
-		// rb.AddForce(dragX);
-		// rb.AddForce(dragY);		
+		rb.AddForce(new Vector3(-dragX, 0, -dragZ));
+		
+		if (isGrounded)
+		{
+			if (Input.GetButtonDown("XRI_Left_PrimaryButton") || Input.GetKeyDown(KeyCode.Z))
+			{
+				rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+				isGrounded = false;
+			}
+		}
+
+
 	}
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.gameObject.layer == 3) {
+			isGrounded = true;
+		}	
+	}
+
+	void OnCollisionExit(Collision other)
+	{
+		if (other.gameObject.layer == 3) {
+			isGrounded = false;
+		}
+	}
+
 }
