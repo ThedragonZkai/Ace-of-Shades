@@ -33,9 +33,12 @@ public class HandDetect : MonoBehaviour
 	// Update is called once per frame
 	void OnTriggerStay(Collider other)
 	{
-		if (other.transform.tag == "Interactable")
+		if (other.isTrigger == true)
 		{
-			touchingObj = other.transform.gameObject;
+			if (other.transform.tag == "Interactable")
+			{
+				touchingObj = other.transform.gameObject;
+			}
 		}
 	}
 	void OnTriggerExit(Collider other)
