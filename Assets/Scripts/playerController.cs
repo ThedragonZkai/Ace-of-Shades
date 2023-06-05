@@ -34,7 +34,7 @@ public class playerController : MonoBehaviour
 		
 		if (isGrounded)
 		{
-			if (Input.GetButtonDown("XRI_Left_PrimaryButton") || Input.GetKeyDown(KeyCode.Z))
+			if (Input.GetButtonDown("XRI_Right_PrimaryButton") || Input.GetKeyDown(KeyCode.Z))
 			{
 				rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
 				isGrounded = false;
