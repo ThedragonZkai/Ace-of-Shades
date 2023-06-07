@@ -11,6 +11,9 @@ public class playerController : MonoBehaviour
 	Camera cam;
 	public float jumpForce;
 	bool isGrounded = false;
+	float rotateBy;
+	public float rotateAmount;
+	float lastRightPrimaryXValue;
 
 	// Start is called before the first frame update
 	void Start()
@@ -20,18 +23,18 @@ public class playerController : MonoBehaviour
 		cam = Camera.main;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update()
+	{
 		Vector3 moveX = new Vector3(cam.transform.right.normalized.x, 0, cam.transform.right.normalized.z) * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-		Vector3 moveZ = new Vector3(cam.transform.forward.normalized.x, 0, cam.transform.forward.normalized.z)  * Input.GetAxis("Vertical") * speed * Time.deltaTime;
+		Vector3 moveZ = new Vector3(cam.transform.forward.normalized.x, 0, cam.transform.forward.normalized.z) * Input.GetAxis("Vertical") * speed * Time.deltaTime;
 		float dragX = rb.velocity.x * speed * drag;
 		float dragZ = rb.velocity.z * speed * drag;
 
 		rb.AddForce(moveX, ForceMode.Impulse);
 		rb.AddForce(moveZ, ForceMode.Impulse);
 		rb.AddForce(new Vector3(-dragX, 0, -dragZ));
-		
+
 		if (isGrounded)
 		{
 			if (Input.GetButtonDown("XRI_Right_PrimaryButton") || Input.GetKeyDown(KeyCode.Z))
@@ -40,8 +43,20 @@ public class playerController : MonoBehaviour
 				isGrounded = false;
 			}
 		}
+		if ((Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal") > 0.8 && lastRightPrimaryXValue !> 0.8) || Input.GetKeyDown(KeyCode.RightArrow)) {
+			
+			// rotateBy += rotateAmount;
+			transform.Rotate(new Vector3(0, rotateAmount, 0));
+		}
+		if ((Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal") < -0.8 && lastRightPrimaryXValue !< -0.8) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+			
+			// rotateBy -= rotateAmount;
+			transform.Rotate(new Vector3(0, -rotateAmount, 0));
+		}
 
 
+
+		lastRightPrimaryXValue = Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal");
 	}
 	void OnCollisionEnter(Collision other)
 	{
@@ -56,5 +71,4 @@ public class playerController : MonoBehaviour
 			isGrounded = false;
 		}
 	}
-
 }

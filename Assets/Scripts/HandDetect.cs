@@ -111,8 +111,9 @@ public class HandDetect : MonoBehaviour
 				visuals.SetActive(true);
 			}
 
-			if (Input.GetAxis("XRI_" + side + "_Trigger") == 1 && lastTriggerPull < 1) {
+			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.95 && lastTriggerPull !> 0.95) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
 				holdingObj.SendMessage("Action");
+				Debug.Log("sent action message");
 			}
 
 		}
