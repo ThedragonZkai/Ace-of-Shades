@@ -68,7 +68,7 @@ public class HandDetect : MonoBehaviour
 		if (touchingObj != null)
 		{
 
-			if ((Input.GetAxis("XRI_" + side + "_IndexTouch") > 0 && lastTriggerPull == 0) || Input.GetMouseButtonDown(mouseB))
+			if ((Input.GetButtonDown("XRI_" + side + "_GripButton")) || Input.GetMouseButtonDown(mouseB))
 			{
 				
 
@@ -90,7 +90,7 @@ public class HandDetect : MonoBehaviour
 
 			}
 	
-			if ((Input.GetAxis("XRI_" + side + "_IndexTouch") == 0 && lastTriggerPull != 0) || Input.GetMouseButtonUp(mouseB))
+			if ((Input.GetButtonUp("XRI_" + side + "_GripButton")) || Input.GetMouseButtonUp(mouseB))
 			{
 				Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
 				foreach (Collider col in allColliders) {
