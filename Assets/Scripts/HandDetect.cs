@@ -64,7 +64,6 @@ public class HandDetect : MonoBehaviour
 			mouseB = 1;
 		}
 
-		Debug.Log(touchingObj);
 		if (touchingObj != null)
 		{
 
@@ -103,7 +102,6 @@ public class HandDetect : MonoBehaviour
 				touchingObj.transform.position = transform.position;
 				holdingObj.GetComponent<Rigidbody>().AddForce((transform.position - lastWorldPos) * forceAmplifier, ForceMode.Impulse);
 				holdingObj.GetComponent<Rigidbody>().AddTorque((transform.rotation.eulerAngles - lastWorldRot) * forceAmplifier, ForceMode.Impulse);
-				Debug.Log((transform.rotation.eulerAngles - lastWorldRot) * forceAmplifier);
 				
 				touchingObj = null;
 				holdingObj = null;

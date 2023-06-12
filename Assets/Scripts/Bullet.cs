@@ -23,9 +23,9 @@ rb.AddForce(new Vector3(0,0,force), ForceMode.Impulse);
 
 	void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.GetComponentsInChildren<Shoot>().Length !> 0)
+		if (other.gameObject.GetComponents<Shoot>().Length < 1)
 		{
-			if (other.gameObject.GetComponentsInChildren<Bullet>().Length! > 0)
+			if (other.gameObject.GetComponents<Bullet>().Length < 1)
 			{
 				Destroy(this.gameObject);
 			}
