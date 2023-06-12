@@ -68,7 +68,7 @@ public class HandDetect : MonoBehaviour
 		if (touchingObj != null)
 		{
 
-			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0 && lastTriggerPull == 0) || Input.GetMouseButtonDown(mouseB))
+			if ((Input.GetAxis("XRI_" + side + "_IndexTouch") > 0 && lastTriggerPull == 0) || Input.GetMouseButtonDown(mouseB))
 			{
 				
 
@@ -90,7 +90,7 @@ public class HandDetect : MonoBehaviour
 
 			}
 	
-			if ((Input.GetAxis("XRI_" + side + "_Trigger") == 0 && lastTriggerPull != 0) || Input.GetMouseButtonUp(mouseB))
+			if ((Input.GetAxis("XRI_" + side + "_IndexTouch") == 0 && lastTriggerPull != 0) || Input.GetMouseButtonUp(mouseB))
 			{
 				Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
 				foreach (Collider col in allColliders) {
@@ -111,14 +111,14 @@ public class HandDetect : MonoBehaviour
 				visuals.SetActive(true);
 			}
 
-			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.95 && lastTriggerPull !> 0.95) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
+			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull !> 0.95) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
 				holdingObj.SendMessage("Action");
 				Debug.Log("sent action message");
 			}
 
 		}
 
-		lastTriggerPull = Input.GetAxis("XRI_" + side + "_Trigger");
+		lastTriggerPull = Input.GetAxis("XRI_" + side + "_IndexTouch");
 		lastWorldPos = transform.position;
 		lastWorldRot = transform.rotation.eulerAngles;
 	}

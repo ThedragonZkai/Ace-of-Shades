@@ -43,12 +43,12 @@ public class playerController : MonoBehaviour
 				isGrounded = false;
 			}
 		}
-		if ((Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal") > 0.8 && lastRightPrimaryXValue !> 0.8) || Input.GetKeyDown(KeyCode.RightArrow)) {
+		if ((Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal") > 0.8 && lastRightPrimaryXValue < 0.8) || Input.GetKeyDown(KeyCode.RightArrow)) {
 			
 			// rotateBy += rotateAmount;
 			transform.Rotate(new Vector3(0, rotateAmount, 0));
 		}
-		if ((Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal") < -0.8 && lastRightPrimaryXValue !< -0.8) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+		if ((Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal") < -0.8 && lastRightPrimaryXValue > -0.8) || Input.GetKeyDown(KeyCode.LeftArrow)) {
 			
 			// rotateBy -= rotateAmount;
 			transform.Rotate(new Vector3(0, -rotateAmount, 0));

@@ -18,7 +18,9 @@ public class Shoot : MonoBehaviour
     }
 
 	public void Action() {
-		Instantiate(bullet);
-		
+		GameObject bul_ = Instantiate(bullet);
+		bul_.transform.position = this.gameObject.transform.position;
+		bul_.transform.rotation = this.gameObject.transform.rotation;
+
 	}
 }

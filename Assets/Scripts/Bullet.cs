@@ -18,11 +18,17 @@ rb.AddForce(new Vector3(0,0,force), ForceMode.Impulse);
     // Update is called once per frame
     void Update()
     {
-		rb.AddForce(new Vector3(0,0,force));
+		rb.AddRelativeForce(new Vector3(0,0,force));
 	}
 
 	void OnCollisionEnter(Collision other)
 	{
-		
+		if (other.gameObject.GetComponentsInChildren<Shoot>().Length !> 0)
+		{
+			if (other.gameObject.GetComponentsInChildren<Bullet>().Length! > 0)
+			{
+				Destroy(this.gameObject);
+			}
+		}
 	}
 }
