@@ -122,14 +122,14 @@ public class HandDetect : MonoBehaviour
 				visuals.SetActive(true);
 			}
 
-			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull !> 0.95) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
+			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull < 0.80) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
 				holdingObj.SendMessage("Action");
 				Debug.Log("sent action message");
 			}
 
 		}
 
-		lastTriggerPull = Input.GetAxis("XRI_" + side + "__Trigger");
+		lastTriggerPull = Input.GetAxis("XRI_" + side + "_Trigger");
 		lastWorldPos = transform.position;
 		lastWorldRot = transform.rotation.eulerAngles;
 	}
