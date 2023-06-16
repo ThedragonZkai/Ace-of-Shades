@@ -17,6 +17,7 @@ public class HandDetect : MonoBehaviour
 	Vector3 lastWorldRot;
 	public int forceAmplifier;
 	public Finger[] fingers;
+	public int grabAmount = 45;
 
 	void Start()
 	{
@@ -58,7 +59,7 @@ public class HandDetect : MonoBehaviour
 	{
 		
 		foreach (Finger f in fingers) {
-			f.transform.localRotation.eulerAngles.Set(f.transform.localRotation.x, Input.GetAxis("XRI_" + side + "_IndexTouch"), f.transform.localRotation.z);
+			f.transform.localEulerAngles = new Vector3(Input.GetAxis("XRI_" + side + "_Grip") * grabAmount,0,0);
 		}
 
 
