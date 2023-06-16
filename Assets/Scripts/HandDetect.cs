@@ -16,6 +16,8 @@ public class HandDetect : MonoBehaviour
 	Vector3 lastWorldPos;
 	Vector3 lastWorldRot;
 	public int forceAmplifier;
+	public Finger[] fingers;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -28,6 +30,9 @@ public class HandDetect : MonoBehaviour
 		{
 			side = "Right";
 		}
+
+		fingers = GetComponentsInChildren<Finger>();;
+
 	}
 
 	// Update is called once per frame
@@ -51,6 +56,13 @@ public class HandDetect : MonoBehaviour
 
 	void Update()
 	{
+		
+		foreach (Finger f in fingers) {
+			f.transform.localRotation.eulerAngles.Set(f.transform.localRotation.x, Input.GetAxis("XRI_" + side + "_IndexTouch"), f.transform.localRotation.z);
+		}
+
+
+
 		if (isHolding == true) {
 			holdingObj.transform.localPosition = new Vector3(0, 0, 0);
 			holdingObj.transform.localEulerAngles = rotationAdd;
