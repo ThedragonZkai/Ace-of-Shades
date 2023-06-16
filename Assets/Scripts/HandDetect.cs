@@ -129,7 +129,7 @@ public class HandDetect : MonoBehaviour
 
 		}
 
-		lastTriggerPull = Input.GetAxis("XRI_" + side + "_IndexTouch");
+		lastTriggerPull = Input.GetAxis("XRI_" + side + "__Trigger");
 		lastWorldPos = transform.position;
 		lastWorldRot = transform.rotation.eulerAngles;
 	}
