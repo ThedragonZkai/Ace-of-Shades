@@ -57,7 +57,6 @@ public class HandDetect : MonoBehaviour
 
 	void Update()
 	{
-		
 		foreach (Finger f in fingers) {
 			f.transform.localEulerAngles = new Vector3(Input.GetAxis("XRI_" + side + "_Grip") * grabAmount,0,0);
 		}

@@ -26,6 +26,8 @@ public class playerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
+		
 		Vector3 moveX = new Vector3(cam.transform.right.normalized.x, 0, cam.transform.right.normalized.z) * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 		Vector3 moveZ = new Vector3(cam.transform.forward.normalized.x, 0, cam.transform.forward.normalized.z) * Input.GetAxis("Vertical") * speed * Time.deltaTime;
 		float dragX = rb.velocity.x * speed * drag;
