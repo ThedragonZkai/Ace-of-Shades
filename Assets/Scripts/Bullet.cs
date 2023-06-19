@@ -24,7 +24,10 @@ col = GetComponent<Collider>();
 		{
 			if (other.gameObject.GetComponents<Bullet>().Length < 1)
 			{
-				Destroy(this.gameObject);
+				if (other.gameObject.GetComponents<playerController>().Length < 1)
+				{
+					Destroy(this.gameObject);
+				}
 			}
 		}
 	}
