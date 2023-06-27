@@ -30,8 +30,8 @@ public class playerController : MonoBehaviour
 		
 		Vector3 moveX = new Vector3(cam.transform.right.normalized.x, 0, cam.transform.right.normalized.z) * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 		Vector3 moveZ = new Vector3(cam.transform.forward.normalized.x, 0, cam.transform.forward.normalized.z) * Input.GetAxis("Vertical") * speed * Time.deltaTime;
-		float dragX = rb.velocity.x * speed * drag;
-		float dragZ = rb.velocity.z * speed * drag;
+		float dragX = rb.velocity.x * speed * drag * Time.deltaTime;
+		float dragZ = rb.velocity.z * speed * drag * Time.deltaTime;
 
 		rb.AddForce(moveX, ForceMode.Impulse);
 		rb.AddForce(moveZ, ForceMode.Impulse);
@@ -60,17 +60,18 @@ public class playerController : MonoBehaviour
 
 		lastRightPrimaryXValue = Input.GetAxis("XRI_Right_Primary2DAxis_Horizontal");
 	}
-	void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.layer == 3) {
-			isGrounded = true;
-		}	
-	}
-
 	void OnCollisionExit(Collision other)
 	{
 		if (other.gameObject.layer == 3) {
 			isGrounded = false;
 		}
 	}
+	void OnCollisionStay(Collision other)
+	{
+		if (other.gameObject.layer == 3) {
+			isGrounded = true;
+		}	
+	}
+
+
 }

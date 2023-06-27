@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1000
-  drag: 0.05
+  drag: 15
   jumpForce: 125
   rotateAmount: 45
 --- !u!54 &3610658782320427795
