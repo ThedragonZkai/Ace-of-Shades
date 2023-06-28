@@ -26,6 +26,10 @@ col = GetComponent<Collider>();
 			{
 				if (other.gameObject.GetComponents<playerController>().Length < 1)
 				{
+					if (other.gameObject.GetComponents<Health>().Length < 1)
+					{
+						other.gameObject.SendMessage("TakeDamage", 1);
+					}
 					Destroy(this.gameObject);
 				}
 			}
