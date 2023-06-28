@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour
 	public GameObject bullet;
 	public GameObject barrel;
 	public float force;
+	public AudioSource shootSound;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -21,6 +22,7 @@ public class Shoot : MonoBehaviour
 
 	public void Action() {
 		GameObject bul_ = Instantiate(bullet);
+		shootSound.Play();
 		bul_.transform.position = barrel.transform.position;
 		bul_.transform.rotation = barrel.transform.rotation;
 		bul_.GetComponent<Rigidbody>().AddForce(barrel.transform.forward * force, ForceMode.Impulse);
