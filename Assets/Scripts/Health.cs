@@ -22,6 +22,8 @@ public class Health : MonoBehaviour
 		}
 		if (health < 0)
 		{
+			GameController cont = GameObject.FindObjectOfType<GameController>().gameObject.GetComponent<GameController>();
+			cont.kills += 1;
 			Destroy(objToDestroy);
 		}
 	}

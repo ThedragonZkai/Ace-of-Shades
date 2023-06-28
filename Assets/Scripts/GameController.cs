@@ -9,15 +9,19 @@ public class GameController : MonoBehaviour
 	public float testingSpeed = 0.1f;
 	public float testingRotateSpeed = 0.1f;
 	bool testingMode = false;
-
-
+	public int stage;
+	public int heightToSetDoorsTo;
+	public float lerpSpeed;
+	public int kills;
 
 	public Vector3 worldPosition;
 	Plane plane = new Plane(Vector3.up, 0);
+	public GameObject[] doors;
 
 	// Start is called before the first frame update
 	void Start()
     {
+		stage = 0;
 	}
 
     // Update is called once per frame
@@ -73,8 +77,24 @@ public class GameController : MonoBehaviour
 			// 	leftController.transform.eulerAngles += new Vector3(0,-testingRotateSpeed,0);
 			// }
 		}
+		int tmp = 0;
+		foreach (GameObject door in doors)
+		{
+			if (stage > tmp)
+			{
+				door.transform.position = new Vector3(door.transform.position.x, Mathf.Lerp(door.transform.position.y,heightToSetDoorsTo, Time.deltaTime * lerpSpeed),door.transform.position.z);
+			}
+			tmp += 1;
+		}
 
+		if (kills >= 2 && stage == 0) {
+			stage += 1;
+			kills = 0;
+		}
+		if (kills >= 3 && stage == 1) {
+			stage += 1;
+			kills = 0;
+		}
 
-
-    }
+	}
 }

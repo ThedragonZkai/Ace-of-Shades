@@ -27,7 +27,7 @@ public class Pathfinding : MonoBehaviour
     void Update()
     {
 		timer = timer + Time.deltaTime;
-		transform.LookAt(target.transform.position);
+		enemyModel.transform.LookAt( new Vector3(target.transform.position.x, Mathf.Lerp(target.transform.position.y, Camera.main.gameObject.transform.position.y, 0.8f),target.transform.position.z) ,Vector3.up);
 		navAgent.SetDestination(target.transform.position);
 		enemyModel.transform.position = new Vector3(enemyModel.transform.position.x, Mathf.Lerp(enemyModel.transform.position.y, Camera.main.gameObject.transform.position.y, lerpSpeed * randomMultiplier * Time.deltaTime), enemyModel.transform.position.z);
 		if (Vector3.Distance(enemyModel.transform.position, target.transform.position) < DistanceToShoot * randomMultiplier && timer > timeToWait * randomMultiplier) {
