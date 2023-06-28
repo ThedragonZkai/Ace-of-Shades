@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 3610658782320427793}
   - component: {fileID: 3610658782320427795}
   - component: {fileID: 3610658782320427794}
+  - component: {fileID: 7207882376913215002}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -323,6 +324,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7207882376913215002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610658782320427798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bb0115418cb4e47b76add2a2ff2f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  objToDestroy: {fileID: 0}
 --- !u!1 &3610658783030977375
 GameObject:
   m_ObjectHideFlags: 0
