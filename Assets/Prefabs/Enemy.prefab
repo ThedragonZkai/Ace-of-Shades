@@ -229,6 +229,8 @@ GameObject:
   - component: {fileID: 9058476045993124606}
   - component: {fileID: 6423576409930542552}
   - component: {fileID: 8223557736740016704}
+  - component: {fileID: 7971985477488000758}
+  - component: {fileID: 7195939033813423768}
   m_Layer: 0
   m_Name: origin
   m_TagString: Untagged
@@ -284,6 +286,34 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 2.6}
   m_TimeToStationary: 0.5
+--- !u!65 &7971985477488000758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370810836208583874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7195939033813423768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370810836208583874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bb0115418cb4e47b76add2a2ff2f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  objToDestroy: {fileID: 1196535699325251190}
+  healthTextSign: {fileID: 0}
 --- !u!1 &6475521699597600445
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,34 +458,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1196535699272435817}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1196535699272435821
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043397490165167416}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1196535699272435810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043397490165167416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bb0115418cb4e47b76add2a2ff2f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 4
-  objToDestroy: {fileID: 1196535699325251190}
-  healthTextSign: {fileID: 0}
 --- !u!114 &9081056728534952659
 MonoBehaviour:
   m_ObjectHideFlags: 0
