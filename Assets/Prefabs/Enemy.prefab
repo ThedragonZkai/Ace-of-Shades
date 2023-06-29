@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navAgent: {fileID: 1196535699325251189}
-  enemyModel: {fileID: 2043397490165167416}
+  enemyModel: {fileID: 2370810836208583874}
   lerpSpeed: 1
   DistanceToShoot: 5
   timeToWait: 2
