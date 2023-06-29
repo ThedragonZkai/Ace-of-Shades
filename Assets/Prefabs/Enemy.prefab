@@ -172,7 +172,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1196535699325251190}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -227,6 +227,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9058476045993124606}
+  - component: {fileID: 6423576409930542552}
+  - component: {fileID: 8223557736740016704}
   m_Layer: 0
   m_Name: origin
   m_TagString: Untagged
@@ -250,6 +252,38 @@ Transform:
   m_Father: {fileID: 1196535699325251191}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6423576409930542552
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370810836208583874}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!208 &8223557736740016704
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370810836208583874}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 2.6}
+  m_TimeToStationary: 0.5
 --- !u!1 &6475521699597600445
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,4 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToSpin: {fileID: 427515377852632298}
-  rotateAmount: 0.6
+  doRandomizeSpeed: 1
+  XMultiplier: 1
+  YMultiplier: 1
+  ZMultiplier: 1
