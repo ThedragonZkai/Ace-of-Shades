@@ -18,6 +18,7 @@ public class HandDetect : MonoBehaviour
 	public int forceAmplifier;
 	public Finger[] fingers;
 	public int grabAmount = 45;
+	public Transform shadesHolder;
 
 	void Start()
 	{
@@ -44,6 +45,16 @@ public class HandDetect : MonoBehaviour
 			if (other.transform.tag == "Interactable")
 			{
 				touchingObj = other.transform.gameObject;
+			}
+			if (other.transform.tag == "Shades")
+			{
+				other.GetComponent<Collider>().enabled = false;
+				other.GetComponent<Spin>().enabled = false;
+				other.transform.SetParent(shadesHolder);
+				other.transform.localPosition = new Vector3(0,0,0);
+				other.transform.eulerAngles = new Vector3(0,0,0);
+				other.transform.localScale = new Vector3(0,0,0);
+				
 			}
 		}
 	}

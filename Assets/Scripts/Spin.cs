@@ -5,22 +5,27 @@ using UnityEngine;
 public class Spin : MonoBehaviour
 {
 	public GameObject objToSpin;
-	public float rotateAmount;
-	private float rotateMultiplierX;
-	private float rotateMultiplierY;
-	private float rotateMultiplierZ;
+	public bool doRandomizeSpeed = true;
+	private float rotateMultiplierXrand = 1;
+	private float rotateMultiplierYrand = 1;
+	private float rotateMultiplierZrand = 1;
+	public float XMultiplier = 1;
+	public float YMultiplier = 1;
+	public float ZMultiplier = 1;
 	// Start is called before the first frame update
 	void Start()
     {
-        rotateMultiplierX = Random.Range(0.5f,1.5f);
-		rotateMultiplierY = Random.Range(0.5f,1.5f);
-		rotateMultiplierZ = Random.Range(0.5f,1.5f);
-
+		if (doRandomizeSpeed)
+		{
+			rotateMultiplierXrand = Random.Range(-1.0f, 1.0f);
+			rotateMultiplierYrand = Random.Range(-1.0f, 1.0f);
+			rotateMultiplierZrand = Random.Range(-1.0f, 1.0f);
+		}
 	}
 
     // Update is called once per frame
     void Update()
     {
-		objToSpin.transform.Rotate(new Vector3(rotateAmount * rotateMultiplierX,rotateAmount *rotateMultiplierY,rotateAmount * rotateMultiplierZ));
+		objToSpin.transform.Rotate(new Vector3(XMultiplier * rotateMultiplierXrand,YMultiplier *rotateMultiplierYrand,ZMultiplier * rotateMultiplierZrand),Space.Self);
 	}
 }
