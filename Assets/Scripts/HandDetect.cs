@@ -46,7 +46,7 @@ public class HandDetect : MonoBehaviour
 			{
 				touchingObj = other.transform.gameObject;
 			}
-			if (other.transform.tag == "Shades")
+			if (other.transform.tag == "Shades" && Input.GetButtonDown("XRI_" + side + "_GripButton"))
 			{
 				other.GetComponent<Collider>().enabled = false;
 				other.GetComponent<Spin>().enabled = false;
@@ -54,7 +54,7 @@ public class HandDetect : MonoBehaviour
 				other.transform.localPosition = new Vector3(0,0,0);
 				other.transform.localEulerAngles = new Vector3(0,0,0);
 				other.transform.localScale = new Vector3(1,1,1);
-				GameObject.FindObjectOfType<GameController>().SendMessage("ShadesPickup");
+				GameObject.FindObjectOfType<GameController>().SendMessage("Shades Pickup");
 			}
 		}
 	}
@@ -92,26 +92,27 @@ public class HandDetect : MonoBehaviour
 
 			if ((Input.GetButtonDown("XRI_" + side + "_GripButton")) || Input.GetMouseButtonDown(mouseB))
 			{
-			if (touchingObj.transform.tag == "Interactable")
-			{
-				
-				Debug.Log("trigger pulled");
-				holdingObj = touchingObj;
-				isHolding = true;
-				holdingObj.GetComponent<Rigidbody>().isKinematic = true;
-				Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
-			foreach (Collider col in allColliders)
-			{
-				col.enabled = false;
-			}
-			visuals.SetActive(false);
-				holdingObj.transform.SetParent(this.gameObject.transform, true);
-				holdingObj.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-				holdingObj.transform.localPosition = new Vector3(0, 0, 0);
-				holdingObj.transform.localEulerAngles = rotationAdd;
+				if (touchingObj.transform.tag == "Interactable")
+				{
 
+					Debug.Log("trigger pulled");
+					holdingObj = touchingObj;
+					isHolding = true;
+					holdingObj.GetComponent<Rigidbody>().isKinematic = true;
+					Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
+					foreach (Collider col in allColliders)
+					{
+						col.enabled = false;
+					}
+					visuals.SetActive(false);
+					holdingObj.transform.SetParent(this.gameObject.transform, true);
+					holdingObj.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+					holdingObj.transform.localPosition = new Vector3(0, 0, 0);
+					holdingObj.transform.localEulerAngles = rotationAdd;
+
+				}
 			}
-	
+
 			if ((Input.GetButtonUp("XRI_" + side + "_GripButton")) || Input.GetMouseButtonUp(mouseB))
 			{
 				Collider[] allColliders = holdingObj.GetComponentsInChildren<Collider>();
@@ -131,16 +132,8 @@ public class HandDetect : MonoBehaviour
 				isHolding = false;
 				visuals.SetActive(true);
 			}
-			else if (touchingObj.transform.tag == "Shades")
-			{
-				touchingObj.GetComponent<Collider>().enabled = false;
-				touchingObj.GetComponent<Spin>().enabled = false;
-				touchingObj.transform.SetParent(shadesHolder);
-				touchingObj.transform.localPosition = new Vector3(0,0,0);
-				touchingObj.transform.localEulerAngles = new Vector3(0,0,0);
-				touchingObj.transform.localScale = new Vector3(1,1,1);
-			}
-			}
+
+			
 
 			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull < 0.80) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
 				holdingObj.SendMessage("Action");
