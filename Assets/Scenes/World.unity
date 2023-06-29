@@ -1269,12 +1269,17 @@ PrefabInstance:
     - target: {fileID: 372348407874108107, guid: 694361e6aa960d9429582eba3f39f075,
         type: 3}
       propertyPath: timeToWait
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 372348407874108107, guid: 694361e6aa960d9429582eba3f39f075,
         type: 3}
       propertyPath: heightToSpawnAt
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 372348407874108107, guid: 694361e6aa960d9429582eba3f39f075,
+        type: 3}
+      propertyPath: healthForEnemiesToSpawnAt
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 372348407874108107, guid: 694361e6aa960d9429582eba3f39f075,
         type: 3}
@@ -40359,7 +40364,7 @@ PrefabInstance:
     - target: {fileID: 372348407874108107, guid: 694361e6aa960d9429582eba3f39f075,
         type: 3}
       propertyPath: timeToWait
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 372348407874108107, guid: 694361e6aa960d9429582eba3f39f075,
         type: 3}

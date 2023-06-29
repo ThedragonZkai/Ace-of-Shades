@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455250d24a955e94da56e48b1893226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 1196535699325251190, guid: f6ed93efc6b1cb940bc2b1508d1cc451, type: 3}
   timeToWait: 3
   heightToSpawnAt: 25
   distanceTillSpawn: 5
+  AmountOfSpawnsBeforeLevelUp: 0
+  healthForEnemiesToSpawnAt: 4

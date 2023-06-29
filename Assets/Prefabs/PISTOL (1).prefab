@@ -97,6 +97,8 @@ MonoBehaviour:
   force: 45
   shootSound: {fileID: 410845783014385465}
   muzzleFlashParticle: {fileID: 4624761153821260707}
+  amountOfBullets: 1
+  spread: 20
 --- !u!1 &5729344615143767403
 GameObject:
   m_ObjectHideFlags: 0
