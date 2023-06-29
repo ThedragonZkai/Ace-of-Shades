@@ -52,8 +52,8 @@ public class HandDetect : MonoBehaviour
 				other.GetComponent<Spin>().enabled = false;
 				other.transform.SetParent(shadesHolder);
 				other.transform.localPosition = new Vector3(0,0,0);
-				other.transform.eulerAngles = new Vector3(0,0,0);
-				other.transform.localScale = new Vector3(0,0,0);
+				other.transform.localEulerAngles = new Vector3(0,0,0);
+				other.transform.localScale = new Vector3(1,1,1);
 				
 			}
 		}
