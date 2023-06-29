@@ -88,13 +88,17 @@ public class GameController : MonoBehaviour
 		}
 
 		if (kills >= 2 && stage == 0) {
-			stage += 1;
+			stage = 1;
 			kills = 0;
 		}
-		if (kills >= 3 && stage == 1) {
-			stage += 1;
+		if (kills >= 3 && stage == 2) {
+			stage = 3;
 			kills = 0;
 		}
 
+	}
+
+	public void ShadesPickup() {
+		stage = 2;
 	}
 }

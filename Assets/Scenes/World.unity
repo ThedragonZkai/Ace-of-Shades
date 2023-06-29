@@ -40240,7 +40240,7 @@ PrefabInstance:
     - target: {fileID: 5453777383979370782, guid: 0872512cbeeed664e9a90abeabef21c7,
         type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Shades
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0872512cbeeed664e9a90abeabef21c7, type: 3}

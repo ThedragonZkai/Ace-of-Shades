@@ -54,7 +54,7 @@ public class HandDetect : MonoBehaviour
 				other.transform.localPosition = new Vector3(0,0,0);
 				other.transform.localEulerAngles = new Vector3(0,0,0);
 				other.transform.localScale = new Vector3(1,1,1);
-				
+				GameObject.FindObjectOfType<GameController>().SendMessage("ShadesPickup");
 			}
 		}
 	}
@@ -92,9 +92,9 @@ public class HandDetect : MonoBehaviour
 
 			if ((Input.GetButtonDown("XRI_" + side + "_GripButton")) || Input.GetMouseButtonDown(mouseB))
 			{
+			if (touchingObj.transform.tag == "Interactable")
+			{
 				
-
-
 				Debug.Log("trigger pulled");
 				holdingObj = touchingObj;
 				isHolding = true;
@@ -130,6 +130,16 @@ public class HandDetect : MonoBehaviour
 				holdingObj = null;
 				isHolding = false;
 				visuals.SetActive(true);
+			}
+			else if (touchingObj.transform.tag == "Shades")
+			{
+				touchingObj.GetComponent<Collider>().enabled = false;
+				touchingObj.GetComponent<Spin>().enabled = false;
+				touchingObj.transform.SetParent(shadesHolder);
+				touchingObj.transform.localPosition = new Vector3(0,0,0);
+				touchingObj.transform.localEulerAngles = new Vector3(0,0,0);
+				touchingObj.transform.localScale = new Vector3(1,1,1);
+			}
 			}
 
 			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull < 0.80) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
