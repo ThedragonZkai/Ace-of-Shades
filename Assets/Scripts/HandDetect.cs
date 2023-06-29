@@ -54,7 +54,7 @@ public class HandDetect : MonoBehaviour
 				other.transform.localPosition = new Vector3(0,0,0);
 				other.transform.localEulerAngles = new Vector3(0,0,0);
 				other.transform.localScale = new Vector3(1,1,1);
-				GameObject.FindObjectOfType<GameController>().SendMessage("Shades Pickup");
+				GameObject.FindObjectOfType<GameController>().SendMessage("ShadesPickup");
 			}
 		}
 	}

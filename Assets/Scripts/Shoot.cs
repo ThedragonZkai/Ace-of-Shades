@@ -8,6 +8,9 @@ public class Shoot : MonoBehaviour
 	public GameObject barrel;
 	public float force;
 	public AudioSource shootSound;
+	public ParticleSystem muzzleFlashParticle;
+	public int amountOfbullets = 1;
+	public float spread = 0;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -21,12 +24,15 @@ public class Shoot : MonoBehaviour
     }
 
 	public void Action() {
-		GameObject bul_ = Instantiate(bullet);
-		shootSound.Play();
-		bul_.transform.position = barrel.transform.position;
-		bul_.transform.rotation = barrel.transform.rotation;
-		bul_.GetComponent<Rigidbody>().AddForce(barrel.transform.forward * force, ForceMode.Impulse);
-
-
+		muzzleFlashParticle.Play();
+		for (int i = 0; i < amountOfbullets; i++)
+		{
+			GameObject bul_ = Instantiate(bullet);
+			shootSound.Play();
+			bul_.transform.position = barrel.transform.position;
+			bul_.transform.rotation = barrel.transform.rotation;
+			bullet.transform.Rotate(new Vector3(Random.Range(-spread, spread),Random.Range(-spread, spread),Random.Range(-spread, spread)));
+			bul_.GetComponent<Rigidbody>().AddForce(barrel.transform.forward * force, ForceMode.Impulse);
+		}
 	}
 }
