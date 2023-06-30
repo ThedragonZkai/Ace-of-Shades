@@ -103,8 +103,8 @@ public class GameController : MonoBehaviour
 		if (kills >=5 && stage == 3) { //change this later 
 			timeChangeEndScreen =  timeChangeEndScreen + Time.deltaTime;
 			EndScreen.SetActive(true);
-			EndScreen.GetComponent<Image>().color = new Color(255,255,255, timeChangeEndScreen * 100);
-			EndScreen.GetComponentInChildren<TMP_Text>().color = new Color(255,255,255,( timeChangeEndScreen * 100) - 610);
+			EndScreen.GetComponent<Image>().color = new Color(255,255,255,( timeChangeEndScreen * 100)/255);
+			EndScreen.GetComponentInChildren<TMP_Text>().color = new Color(0,0,0,(( timeChangeEndScreen * 100) - 610) / 255);
 
 		}
 

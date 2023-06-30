@@ -14,6 +14,7 @@ public class EnemySpawn : MonoBehaviour
 	public int AmountOfSpawnsBeforeLevelUp;
 	GameController gameController;
 	public int healthForEnemiesToSpawnAt;
+	public int[] stagesToSpawnAt;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -25,14 +26,27 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		timer = timer + Time.deltaTime;
-		if (timer > timeToWait * randomMultiplier && Vector3.Distance(player.transform.position, this.transform.position) < distanceTillSpawn && AmountOfSpawnsBeforeLevelUp > 0) {
-			GameObject e = Instantiate(enemy, this.transform);
-			GameObject em = e.GetComponent<Pathfinding>().enemyModel;
-			e.GetComponentInChildren<Health>().gameObject.SendMessage("TakeDamage", -healthForEnemiesToSpawnAt);
-			em.transform.position = new Vector3(em.transform.position.x,heightToSpawnAt,em.transform.position.z);
-			timer = 0;
-			AmountOfSpawnsBeforeLevelUp = AmountOfSpawnsBeforeLevelUp - 1;
+		if (checkStage())
+		{
+			timer = timer + Time.deltaTime;
+			if (timer > timeToWait * randomMultiplier && Vector3.Distance(player.transform.position, this.transform.position) < distanceTillSpawn && AmountOfSpawnsBeforeLevelUp > 0)
+			{
+				GameObject e = Instantiate(enemy, this.transform);
+				GameObject em = e.GetComponent<Pathfinding>().enemyModel;
+				e.GetComponentInChildren<Health>().gameObject.SendMessage("TakeDamage", -healthForEnemiesToSpawnAt);
+				em.transform.position = new Vector3(em.transform.position.x, heightToSpawnAt, em.transform.position.z);
+				timer = 0;
+				AmountOfSpawnsBeforeLevelUp = AmountOfSpawnsBeforeLevelUp - 1;
+			}
 		}
+	}
+	bool checkStage() {
+
+		foreach (int stage in stagesToSpawnAt) {
+			if (stage == gameController.stage) {
+				return true;
+			}
+		}
+			return false;
 	}
 }

@@ -266,8 +266,8 @@ GameObject:
   - component: {fileID: 3610658782320427799}
   - component: {fileID: 3610658782320427793}
   - component: {fileID: 3610658782320427795}
-  - component: {fileID: 3610658782320427794}
   - component: {fileID: 7207882376913215002}
+  - component: {fileID: 1837757805876578874}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -342,20 +342,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!136 &3610658782320427794
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3610658782320427798}
-  m_Material: {fileID: 13400000, guid: db65daac0cee05347afe546d1961004e, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7207882376913215002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +357,19 @@ MonoBehaviour:
   health: 50
   objToDestroy: {fileID: 0}
   healthTextSign: {fileID: 0}
+--- !u!65 &1837757805876578874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610658782320427798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 2, z: 0.2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3610658783030977375
 GameObject:
   m_ObjectHideFlags: 0
