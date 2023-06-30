@@ -15,6 +15,7 @@ public class EnemySpawn : MonoBehaviour
 	GameController gameController;
 	public int healthForEnemiesToSpawnAt;
 	public int[] stagesToSpawnAt;
+	public Vector3 enemySpawnRange;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -32,6 +33,7 @@ public class EnemySpawn : MonoBehaviour
 			if (timer > timeToWait * randomMultiplier && Vector3.Distance(player.transform.position, this.transform.position) < distanceTillSpawn && AmountOfSpawnsBeforeLevelUp > 0)
 			{
 				GameObject e = Instantiate(enemy, this.transform);
+				e.transform.localPosition = new Vector3(Random.Range(-enemySpawnRange.x, enemySpawnRange.x), e.transform.localPosition.y, Random.Range(-enemySpawnRange.z, enemySpawnRange.z));
 				GameObject em = e.GetComponent<Pathfinding>().enemyModel;
 				e.GetComponentInChildren<Health>().gameObject.SendMessage("TakeDamage", -healthForEnemiesToSpawnAt);
 				em.transform.position = new Vector3(em.transform.position.x, heightToSpawnAt, em.transform.position.z);

@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
 			stage = 3;
 			kills = 0;
 		}
-		if (kills >= 5 && stage == 3) {
+		if (kills >= 10 && stage == 3) {
 			initiateBoss();
 			stage = 5;
 			kills = 0;
