@@ -6,6 +6,9 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
+	public AudioSource mainMusic;
+	public AudioSource bossmusic;
+	public AudioSource winMusic;
 	public GameObject leftController;
 	public GameObject rightController;
 	public float testingSpeed = 0.1f;
@@ -27,6 +30,7 @@ public class GameController : MonoBehaviour
     {
 		EndScreen.SetActive(false);
 		stage = 0;
+		mainMusic.Play();
 	}
 
     // Update is called once per frame
@@ -100,11 +104,13 @@ public class GameController : MonoBehaviour
 			stage = 3;
 			kills = 0;
 		}
-		if (kills >= 10 && stage == 3) {
+		if (kills >= 5 && stage == 3) {
+			initiateBoss();
 			stage = 5;
 			kills = 0;
 		}
 		if (kills >=5 && stage == 5) { //change this later 
+			win();
 			timeChangeEndScreen =  timeChangeEndScreen + Time.deltaTime;
 			EndScreen.SetActive(true);
 			EndScreen.GetComponent<Image>().color = new Color(255,255,255,( timeChangeEndScreen * 100)/255);
@@ -116,5 +122,18 @@ public class GameController : MonoBehaviour
 
 	public void ShadesPickup() {
 		stage = 2;
+	}
+
+	private void initiateBoss() {
+		if (mainMusic.isPlaying) {
+			mainMusic.Stop();
+			bossmusic.Play();
+		}
+	}
+	private void win() {
+		if (!winMusic.isPlaying) {
+			bossmusic.Stop();
+			winMusic.Play();
+		}
 	}
 }
