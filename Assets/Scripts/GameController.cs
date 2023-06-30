@@ -100,7 +100,11 @@ public class GameController : MonoBehaviour
 			stage = 3;
 			kills = 0;
 		}
-		if (kills >=5 && stage == 3) { //change this later 
+		if (kills >= 10 && stage == 3) {
+			stage = 5;
+			kills = 0;
+		}
+		if (kills >=5 && stage == 5) { //change this later 
 			timeChangeEndScreen =  timeChangeEndScreen + Time.deltaTime;
 			EndScreen.SetActive(true);
 			EndScreen.GetComponent<Image>().color = new Color(255,255,255,( timeChangeEndScreen * 100)/255);
