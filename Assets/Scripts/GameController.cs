@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -13,14 +15,17 @@ public class GameController : MonoBehaviour
 	public int heightToSetDoorsTo;
 	public float lerpSpeed;
 	public int kills;
+	public GameObject EndScreen;
 
 	public Vector3 worldPosition;
 	Plane plane = new Plane(Vector3.up, 0);
 	public GameObject[] doors;
+	private float timeChangeEndScreen = 0;
 
 	// Start is called before the first frame update
 	void Start()
     {
+		EndScreen.SetActive(false);
 		stage = 0;
 	}
 
@@ -91,9 +96,16 @@ public class GameController : MonoBehaviour
 			stage = 1;
 			kills = 0;
 		}
-		if (kills >= 3 && stage == 2) {
+		if (kills >= 5 && stage == 2) {
 			stage = 3;
 			kills = 0;
+		}
+		if (kills >=5 && stage == 3) { //change this later 
+			timeChangeEndScreen =  timeChangeEndScreen + Time.deltaTime;
+			EndScreen.SetActive(true);
+			EndScreen.GetComponent<Image>().color = new Color(255,255,255, timeChangeEndScreen * 100);
+			EndScreen.GetComponentInChildren<TMP_Text>().color = new Color(255,255,255,( timeChangeEndScreen * 100) - 610);
+
 		}
 
 	}
