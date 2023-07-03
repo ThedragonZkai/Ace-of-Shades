@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 		}
 
 		if (testingMode) {
-			float testSpeedMod = testingSpeed * Time.deltaTime;
+			float testSpeedMod = testingSpeed;
 			if (Input.GetKey(KeyCode.W)) {
 				leftController.transform.position = leftController.transform.position + (new Vector3(0, 0, testingSpeed));
 			}
@@ -89,6 +89,9 @@ public class GameController : MonoBehaviour
 		int tmp = 0;
 		foreach (GameObject door in doors)
 		{
+			if (stage == 5) {
+				lerpSpeed = 0.1f;
+			}
 			if (stage > tmp)
 			{
 				door.transform.position = new Vector3(door.transform.position.x, Mathf.Lerp(door.transform.position.y,heightToSetDoorsTo, Time.deltaTime * lerpSpeed),door.transform.position.z);
@@ -104,12 +107,12 @@ public class GameController : MonoBehaviour
 			stage = 3;
 			kills = 0;
 		}
-		if (kills >= 10 && stage == 3) {
+		if (kills >= 5 && stage == 3) {
 			initiateBoss();
 			stage = 5;
 			kills = 0;
 		}
-		if (kills >=5 && stage == 5) { //change this later 
+		if (kills >=10 && stage == 5) { //change this later 
 			win();
 			timeChangeEndScreen =  timeChangeEndScreen + Time.deltaTime;
 			EndScreen.SetActive(true);

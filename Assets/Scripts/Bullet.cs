@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 	Rigidbody rb;
 	Collider col;
+	float damage = 1;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -28,18 +29,21 @@ col = GetComponent<Collider>();
 				{
 					if (other.gameObject.GetComponents<Health>().Length > 0)
 					{
-						other.gameObject.SendMessage("TakeDamage", 1);
+						other.gameObject.SendMessage("TakeDamage", damage);
 					}
 					Destroy(this.gameObject);
 				}
 				else {
 					if (other.gameObject.GetComponents<Health>().Length > 0)
 					{
-						other.gameObject.SendMessage("TakeDamage", 1);
+						other.gameObject.SendMessage("TakeDamage", damage);
 					}
 					Destroy(this.gameObject);
 				}
 			}
 		}
+	}
+	public void SetDamage(float damage_) {
+		damage = damage_;
 	}
 }

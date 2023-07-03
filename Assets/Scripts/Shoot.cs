@@ -11,6 +11,7 @@ public class Shoot : MonoBehaviour
 	public ParticleSystem muzzleFlashParticle;
 	public int amountOfBullets = 1;
 	public float spread = 0;
+	public float BulletDamage = 1;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -31,10 +32,11 @@ public class Shoot : MonoBehaviour
 			GameObject bul_ = Instantiate(bullet);
 			shootSound.Play();
 			bul_.transform.position = barrel.transform.position;
-			bul_.transform.rotation = barrel.transform.rotation;
+			// bul_.transform.localRotation = barrel.transform.rotation;
 			bul_.transform.Rotate(new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread)));
-			bul_.transform.localEulerAngles = new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
-			bul_.GetComponent<Rigidbody>().AddForce(barrel.transform.forward * force, ForceMode.Impulse);
+			bul_.transform.localEulerAngles = new Vector3(barrel.transform.eulerAngles.x + Random.Range(-spread, spread), barrel.transform.eulerAngles.y + Random.Range(-spread, spread), barrel.transform.eulerAngles.z + Random.Range(-spread, spread));
+			bul_.GetComponent<Rigidbody>().AddRelativeForce(bul_.transform.forward * force, ForceMode.Impulse);
+			bul_.SendMessage("SetDamage",BulletDamage);
 		}
 	}
 }

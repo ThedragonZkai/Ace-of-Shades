@@ -12,6 +12,7 @@ public class Spin : MonoBehaviour
 	public float XMultiplier = 1;
 	public float YMultiplier = 1;
 	public float ZMultiplier = 1;
+	private float deltaTimeAdjuster = 144;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -26,6 +27,6 @@ public class Spin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		objToSpin.transform.Rotate(new Vector3(XMultiplier * rotateMultiplierXrand,YMultiplier *rotateMultiplierYrand,ZMultiplier * rotateMultiplierZrand),Space.Self);
+		objToSpin.transform.Rotate(new Vector3(XMultiplier * rotateMultiplierXrand,YMultiplier *rotateMultiplierYrand,ZMultiplier * rotateMultiplierZrand) * Time.deltaTime * deltaTimeAdjuster,Space.Self);
 	}
 }
