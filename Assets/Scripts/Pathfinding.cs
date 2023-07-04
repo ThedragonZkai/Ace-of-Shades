@@ -32,7 +32,7 @@ public class Pathfinding : MonoBehaviour
 		enemyModel.transform.position = new Vector3(enemyModel.transform.position.x, Mathf.Lerp(enemyModel.transform.position.y, Camera.main.gameObject.transform.position.y, lerpSpeed * randomMultiplier * Time.deltaTime), enemyModel.transform.position.z);
 		if (Vector3.Distance(enemyModel.transform.position, target.transform.position) < DistanceToShoot * randomMultiplier && timer > timeToWait * randomMultiplier) {
 			timer = 0;
-			gameObject.SendMessage("Action");
+			gameObject.SendMessage("ShootGun");
 		}
 		
 	}

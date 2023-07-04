@@ -3,7 +3,11 @@ guid: 82bb0115418cb4e47b76add2a2ff2f39
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - objToDestroy: {instanceID: 0}
+  - healthTextSign: {instanceID: 0}
+  - deathSystem: {fileID: 7596913018542617751, guid: 4f90128dfbfb9d24386a7099a341809e,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

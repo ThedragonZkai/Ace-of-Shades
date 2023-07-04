@@ -221,6 +221,9 @@ MonoBehaviour:
   muzzleFlashParticle: {fileID: 7154582404149160977}
   amountOfBullets: 1
   spread: 5
+  BulletDamage: 1
+  delay: 0.5
+  isAutomatic: 0
 --- !u!1 &1813574023949126371
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +397,8 @@ MonoBehaviour:
   health: 0
   objToDestroy: {fileID: 1196535699325251190}
   healthTextSign: {fileID: 0}
+  deathSystem: {fileID: 7596913018542617751, guid: 4f90128dfbfb9d24386a7099a341809e,
+    type: 3}
 --- !u!1 &6475521699597600445
 GameObject:
   m_ObjectHideFlags: 0

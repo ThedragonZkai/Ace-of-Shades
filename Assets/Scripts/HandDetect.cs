@@ -135,9 +135,13 @@ public class HandDetect : MonoBehaviour
 
 			
 
-			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull < 0.80) || Input.GetButtonDown("XRI_" + side + "_Trigger") || Input.GetKeyDown(KeyCode.Space)) {
+			if ((Input.GetAxis("XRI_" + side + "_Trigger") > 0.80 && lastTriggerPull < 0.80) || Input.GetButton("XRI_" + side + "_Trigger") || Input.GetKey(KeyCode.Space)) {
 				holdingObj.SendMessage("Action");
 				Debug.Log("sent action message");
+			}
+			if ((Input.GetAxis("XRI_" + side + "_Trigger") < 0.80 && lastTriggerPull > 0.80) || Input.GetButtonUp("XRI_" + side + "_Trigger") || Input.GetKeyUp(KeyCode.Space)) {
+				holdingObj.SendMessage("StopAction");
+				Debug.Log("sent stop action message");
 			}
 
 		}

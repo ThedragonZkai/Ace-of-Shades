@@ -5,9 +5,10 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
-	public int health;
+	public float health;
 	public GameObject objToDestroy;
 	public TMP_Text healthTextSign;
+	public ParticleSystem deathSystem;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -18,17 +19,21 @@ public class Health : MonoBehaviour
     void Update()
     {
 		if (healthTextSign != null) {
-			healthTextSign.text = "Health: " + this.health.ToString();
+			healthTextSign.text = "Health: " + Mathf.Round(this.health).ToString();
 		}
-		if (health < 0)
+		if (health < 0.5f)
 		{
 			GameController cont = GameObject.FindObjectOfType<GameController>().gameObject.GetComponent<GameController>();
 			cont.kills += 1;
+			if (deathSystem != null) {
+				ParticleSystem ds = Instantiate(deathSystem);
+				ds.gameObject.transform.position = this.gameObject.transform.position;
+			}
 			Destroy(objToDestroy);
 		}
 	}
 
-	public void TakeDamage(int damage) {
+	public void TakeDamage(float damage) {
 		health = health - damage;
 	}
 }

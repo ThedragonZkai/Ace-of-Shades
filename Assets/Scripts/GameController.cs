@@ -25,12 +25,16 @@ public class GameController : MonoBehaviour
 	public GameObject[] doors;
 	private float timeChangeEndScreen = 0;
 
+	private Animator anim;
+
 	// Start is called before the first frame update
 	void Start()
     {
 		EndScreen.SetActive(false);
 		stage = 0;
 		mainMusic.Play();
+		anim = GetComponent<Animator>();
+		anim.Play("GameStart");
 	}
 
     // Update is called once per frame
@@ -102,15 +106,18 @@ public class GameController : MonoBehaviour
 		if (kills >= 2 && stage == 0) {
 			stage = 1;
 			kills = 0;
+			anim.Play("Stage1Complete");
 		}
 		if (kills >= 5 && stage == 2) {
 			stage = 3;
 			kills = 0;
+			anim.Play("Stage2Complete");
 		}
 		if (kills >= 5 && stage == 3) {
 			initiateBoss();
 			stage = 5;
 			kills = 0;
+			anim.Play("BossFight");
 		}
 		if (kills >=10 && stage == 5) { //change this later 
 			win();
@@ -118,13 +125,14 @@ public class GameController : MonoBehaviour
 			EndScreen.SetActive(true);
 			EndScreen.GetComponent<Image>().color = new Color(255,255,255,( timeChangeEndScreen * 100)/255);
 			EndScreen.GetComponentInChildren<TMP_Text>().color = new Color(0,0,0,(( timeChangeEndScreen * 100) - 610) / 255);
-
+			anim.Play("GameEnd");
 		}
 
 	}
 
 	public void ShadesPickup() {
 		stage = 2;
+		anim.Play("ShadesPickup");
 	}
 
 	private void initiateBoss() {

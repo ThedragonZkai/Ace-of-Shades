@@ -98,7 +98,9 @@ MonoBehaviour:
   shootSound: {fileID: 410845783014385465}
   muzzleFlashParticle: {fileID: 4624761153821260707}
   amountOfBullets: 1
-  spread: 20
+  spread: 3
+  BulletDamage: 1
+  delay: 0.2
 --- !u!1 &5729344615143767403
 GameObject:
   m_ObjectHideFlags: 0
