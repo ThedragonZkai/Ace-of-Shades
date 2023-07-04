@@ -16,16 +16,27 @@ public class Shoot : MonoBehaviour
 	private float timeSinceLastShot;
 	public bool isAutomatic = false;
 	private bool ShootButtonPressed = false;
+	public GameObject gunModel;
+	public float recoil;
+	private float currentRecoil;
+	private Vector3 oldLocalPos;
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		oldLocalPos = gunModel.transform.localPosition;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		timeSinceLastShot += Time.deltaTime;
+		if (currentRecoil > 0) {
+			gunModel.transform.localPosition = oldLocalPos + new Vector3(0,currentRecoil,0);
+			currentRecoil -= Time.deltaTime;
+		}
+		else {
+			currentRecoil = 0;
+		}
 
 	}
 
@@ -66,6 +77,8 @@ public class Shoot : MonoBehaviour
 			bul_.transform.localEulerAngles = new Vector3(barrel.transform.eulerAngles.x + Random.Range(-spread, spread), barrel.transform.eulerAngles.y + Random.Range(-spread, spread), barrel.transform.eulerAngles.z + Random.Range(-spread, spread));
 			bul_.GetComponent<Rigidbody>().AddRelativeForce(bul_.transform.forward * force, ForceMode.Impulse);
 			bul_.SendMessage("SetDamage", BulletDamage);
+
+			currentRecoil = recoil;
 		}
 	}
 }

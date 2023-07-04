@@ -101,6 +101,9 @@ MonoBehaviour:
   spread: 3
   BulletDamage: 1
   delay: 0.2
+  isAutomatic: 0
+  gunModel: {fileID: 3084663016867973140}
+  recoil: 0.02
 --- !u!1 &5729344615143767403
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +426,12 @@ PrefabInstance:
 --- !u!4 &2415402776831136430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 361b2e80183f7d045a7f9a01de26ae07,
+    type: 3}
+  m_PrefabInstance: {fileID: 2742557458336478533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3084663016867973140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 361b2e80183f7d045a7f9a01de26ae07,
     type: 3}
   m_PrefabInstance: {fileID: 2742557458336478533}
   m_PrefabAsset: {fileID: 0}
