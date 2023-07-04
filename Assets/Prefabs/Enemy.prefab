@@ -200,7 +200,7 @@ MonoBehaviour:
   navAgent: {fileID: 1196535699325251189}
   enemyModel: {fileID: 2370810836208583874}
   lerpSpeed: 1
-  DistanceToShoot: 5
+  DistanceToShoot: 6
   timeToWait: 1
 --- !u!114 &180284576696708119
 MonoBehaviour:
@@ -397,7 +397,10 @@ MonoBehaviour:
   health: 0
   objToDestroy: {fileID: 1196535699325251190}
   healthTextSign: {fileID: 0}
+  healthSlider: {fileID: 0}
   deathSystem: {fileID: 7596913018542617751, guid: 4f90128dfbfb9d24386a7099a341809e,
+    type: 3}
+  soundToPlayWhenDies: {fileID: 7974303099027612151, guid: eb180bc8cb2f3114f87811ca1fc8e2ea,
     type: 3}
 --- !u!1 &6475521699597600445
 GameObject:

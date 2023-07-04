@@ -10,8 +10,8 @@ public class Bullet : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-rb = GetComponent<Rigidbody>();
-col = GetComponent<Collider>();
+rb = this.gameObject.GetComponent<Rigidbody>();
+col = this.gameObject.GetComponent<Collider>();
 	}
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ col = GetComponent<Collider>();
     {
 	}
 
-	void OnCollisionEnter(Collision other)
+	public void OnCollisionEnter(Collision other)
 	{
 		if (other.gameObject.GetComponents<Shoot>().Length < 1)
 		{

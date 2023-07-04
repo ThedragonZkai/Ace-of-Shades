@@ -40,7 +40,7 @@ public class Shoot : MonoBehaviour
 		}
 		else
 		{
-			if (ShootButtonPressed == false)
+			if (ShootButtonPressed == false && timeSinceLastShot > delay)
 			{
 				ShootGun();
 			}
