@@ -259,7 +259,7 @@ MonoBehaviour:
   muzzleFlashParticle: {fileID: 6236505723712191388}
   amountOfBullets: 7
   spread: 15
-  BulletDamage: 0.16
+  BulletDamage: 0.25
   delay: 0.7
   isAutomatic: 0
   gunModel: {fileID: 8399811514761328651}
